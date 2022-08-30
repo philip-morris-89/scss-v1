@@ -1,0 +1,40 @@
+$size: 10rem;
+$bounceStart: 0px;
+$bounceDistance: 30px;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: lightblue;
+}
+
+@mixin bounceAnimation($duration, $start, $distance) {
+  @keyframes bounce {
+    0% {transform: translateY($start);}
+    40% {transform: translateY(-$distance);}
+    60% {transform: translateY(-$distance / 2);}
+    100% { transform: translateY($start);}
+  }
+  animation-duration: $duration;
+}
+
+.bounce {
+  width: $size;
+  height: $size;
+  border-radius: $size;
+  background-color: cyan;
+  animation-name: bounce;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  @include bounceAnimation(1s,$bounceStart, $bounceDistance)
+}

@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin displayFlex($direction) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@function random-hex(){
+  $rgb: '';
+  $i: 6;
+  @while $i > 0 {
+    $hex-unit: random(16) - 1;
+    $letters: A, B, C, D, E, F;
+    @if $hex-unit > 9 { 
+      $hex-unit: nth($letters, ($hex-unit - 9));
+    };
+    $rgb: str-insert($rgb, ("" + $hex-unit), 0);
+    $i: $i - 1;
+  }
+  @return unquote("#"+"#{$rgb}");
+}
+
+body {
+  @include displayFlex(column);
+  background-color: aliceblue;
+}
+
+.container {
+  @include displayFlex(row);
+  height: 100%;
+  justify-content: space-around;
+  padding: 0 1rem;
+
+  .col {
+    @include displayFlex(column);
+    flex-grow: 1;
+    margin: 0 1rem;
+
+    @for $i from 0 through 12 {
+      &:nth-child(#{$i}){
+        background-color: random-hex();
+      }
+    }
+  } /* Col */
+} /* Container */
