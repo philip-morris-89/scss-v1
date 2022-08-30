@@ -1,0 +1,52 @@
+$color10: red;
+$color20: blue;
+$color30: green;
+
+$unit: 1rem;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  margin: $unit;
+  padding: $unit;
+  text-align: center;
+  border: 1px solid $color10;
+
+  h1 {
+    color: $color30;
+    text-decoration: underline;
+    text-decoration-color: $color20;
+    line-height: 1.2;
+    padding: $unit;
+  }
+
+  section {
+    display: flex;
+    flex-direction: row;
+
+    article {
+      display: flex;
+      flex-direction: column;
+      padding: $unit;
+      margin: $unit;
+      border: 1px solid $color30;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        color: $color20;
+      }
+
+      &:nth-child(2n) {
+        p {
+          color: $color10;
+        }
+      }
+    }
+  }
+}
